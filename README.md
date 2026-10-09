@@ -1,6 +1,6 @@
 # owui-browser-page-vision
 
-A set of tools for **Open WebUI**: 
+A heavily vibe-coded set of tools for **Open WebUI**: 
 document download/read/OCR, browser automation, and the assistant skills.
 
 ```
@@ -16,8 +16,8 @@ scripts    - owui-mcp.cmd - starts all five bridges
 |---|---|---|
 | MCP tool server | `local-docs-mcp` | `local_docs_mcp.py` + `rapidocr_worker.py` - the tool server behind port `:8091` |
 | Skills | `find-and-read-files` · `pdf-ocr` · `web-page-interaction` | Markdown skill docs loaded by the assistant |
-| Launcher | `scripts/owui-mcp.cmd` | Starts all five Open WebUI MCP bridges (idempotent, skips live ports) |
-| Stopper | `scripts/stop-owui-mcp.ps1` | Kills the local-docs bridge chain (also matches the legacy `helper_server` name) |
+| Launcher | `scripts/owui-mcp.cmd` | Starts all five Open WebUI MCP bridges |
+| Stopper | `scripts/stop-owui-mcp.ps1` | Kills the local-docs bridge chain |
 
 ## Tools (local-docs-mcp)
 
@@ -39,14 +39,11 @@ scripts    - owui-mcp.cmd - starts all five bridges
 - If a page/image returns **no text** or was **cut off mid-page**
   (`finish_reason=length`), it is automatically re-read with local RapidOCR
   and `method` says so, e.g. `vision:<model> (+local fallback p1:length)`.
-- Local OCR runs in a **worker subprocess** with a hard timeout - numpy/ONNX
-  never load inside the bridge, so a first-load stall can't wedge every tool
-  call (a real failure mode seen on this machine).
 
 ### Runtime roots
 
 Paths resolve from the OS user profile at startup (Windows known-folders
-API, falling back to `HOME`); nothing personal is hardcoded. Overrides:
+API, falling back to `HOME`); Overrides:
 `DOCS_TMP` for the `tmp` root, `LMSTUDIO_URL` for the LM Studio API
 (default `http://localhost:1234/v1`).
 
