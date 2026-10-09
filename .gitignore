@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Secrets / local state
+.token
+.env
+*.token
+webui.db*
+*.db-shm
+*.db-wal
+data/
+.lmstudio/
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/
+
+# Downloads / test artifacts
+downloads/
+tmp/
+*.part
