@@ -66,3 +66,7 @@ API, falling back to `HOME`); Overrides:
 4. Register the bridge in Open WebUI → Admin → Connections as an MCP server:
    URL `http://localhost:8091`.
 5. `scripts\owui-mcp.cmd` starts everything; it skips ports already listening.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
